@@ -130,12 +130,13 @@ def lambda_handler(event, context):
             GroupBy=[
                 {
                     'Type': 'DIMENSION',
-                    'Key': 'SERVICE'
+                    'Key': 'LINKED_ACCOUNT'
                 },
             ],
             Filter={
                 'And': [
                     {'Dimensions': {'Key': 'SERVICE', 'Values': ['Amazon CloudFront']}},
+                    {'Dimensions': {"Key": 'RECORD_TYPE', 'Values': ['Usage']}},
                     {'Dimensions': {'Key': 'USAGE_TYPE', 'Values': [
                         'AP-DataTransfer-Out-Bytes',
                         'AP-DataTransfer-Out-OBytes',
